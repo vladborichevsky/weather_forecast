@@ -1,0 +1,7 @@
+/* Подключаем удалённо шрифт из гугл фонтс */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
+
+@import './variables.css';
+@import './common.css';
+
+
