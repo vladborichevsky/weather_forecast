@@ -85,6 +85,8 @@
       // функция получения данных с сервера
       async getWeather() {
         this.tipsCityName = []
+        this.fetchFail = false
+        this.errorFetchMes = ''
 
         if(this.city.length < 3 ) {
           this.errorFetchMes = this.errorFetchMessages.minLength
@@ -105,6 +107,8 @@
         } else if(data == 'fetchFail') {
           this.fetchFail = true
           this.errorFetchMes = this.errorFetchMessages.fetchFail
+
+          setTimeout(()=> {this.showSpinner = false}, 20)
         } else {
           this.weatherData = data
         }
