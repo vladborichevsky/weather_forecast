@@ -84,31 +84,38 @@
     methods: {
       // функция получения данных с сервера
       async getWeather() {
-        this.tipsCityName = []
-        this.fetchFail = false
-        this.errorFetchMes = ''
 
-        if(this.city.length < 3 ) {
-          this.errorFetchMes = this.errorFetchMessages.minLength
-          this.showSpinner = false
-          
-          return false
-        }
+        const promise = new Promise((resolve) => {
+          this.tipsCityName = []
+          this.fetchFail = false
+          this.errorFetchMes = ''
 
-        this.showStartScreen = false
-        this.weatherData = {}
-        // из-за различного асинхронного кода в вотчере city, возникла необходимость запускать спиннер с небольшой задержкой
-        setTimeout(()=> {this.showSpinner = true}, 10)
+          if(this.city.length < 3 ) {
+            this.errorFetchMes = this.errorFetchMessages.minLength
+            this.showSpinner = false
+            
+            return false
+          }
+
+          this.showStartScreen = false
+          this.weatherData = {}
+          resolve()
+        })
+
+        promise.then( () => this.showSpinner = true )
 
         const data = await ApiGetWeather(this.city)
         // проверка, что если пользователь неправильно ввёл название города и из ApiGetWeather() вернулась строка '404', то мы показываем пользователю соответствующую ошибку
         if (data == '404') {
           this.errorFetchMes = this.errorFetchMessages.correctCityName
         } else if(data == 'fetchFail') {
-          this.fetchFail = true
-          this.errorFetchMes = this.errorFetchMessages.fetchFail
+          const promise = new Promise((resolve) => {
+            this.fetchFail = true
+            this.errorFetchMes = this.errorFetchMessages.fetchFail
+            resolve()
+          })
 
-          setTimeout(()=> {this.showSpinner = false}, 20)
+          promise.then( () => this.showSpinner = false )
         } else {
           this.weatherData = data
         }
@@ -153,30 +160,30 @@
         this.errorFetchMes = '' // как только пользователь вводит (удаляет) что-то в инпуте - сообщение об ошибке исчезает
         this.showSpinner = false // как только пользователь вводит (удаляет) что-то в инпуте -спиннер исчезает
 
-        // отслеживаем изменения переменной city, чтобы добавить данные о её текущем состоянии в объект window.history (в виде строки), используя метод pushState()
-        if (this.city.length == 0) {
-          window.history.pushState(null, document.title, `${window.location.pathname}`)
-        } else {
-          window.history.pushState(null, document.title, `${window.location.pathname}?city_name=${this.city}`)
-        }
+        const promise = new Promise((resolve) => {
+          // отслеживаем изменения переменной city, чтобы добавить данные о её текущем состоянии в объект window.history (в виде строки), используя метод pushState()
+          if (this.city.length == 0) {
+            window.history.pushState(null, document.title, `${window.location.pathname}`)
+          } else {
+            window.history.pushState(null, document.title, `${window.location.pathname}?city_name=${this.city}`)
+          }
 
 
-        if(!this.stopTipsCityName && this.city.length > 0) {
-          // этот промис и последующий вызов then нужен для оптимизации скорости показа вспомогательных подсказок названия города
-          let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve( this.computedTipsCityName() , 300) 
-          )})
+          if(!this.stopTipsCityName && this.city.length > 0) {
+            // этот промис и последующий вызов then нужен для оптимизации скорости показа вспомогательных подсказок названия города
+            let promise = new Promise((resolve) => {
+              resolve(this.computedTipsCityName())
+            })
 
-          promise.then(result => this.tipsCityName = result)
-        } else {
-          this.tipsCityName = []
-        }
+            promise.then(result => this.tipsCityName = result)
+          } else {
+            this.tipsCityName = []
+          }
 
-        // Этот setTimeout нужен, чтобы в случае, когда сработала функция setCityName(), вернуть переменную stopTipsCityName в значение false
-        setTimeout( () => {
-          this.stopTipsCityName = false
-        }, 200)
+            resolve()
+        })
 
+        promise.then( () => this.stopTipsCityName = false )
       }
     },
 
