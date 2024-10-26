@@ -52,11 +52,7 @@
       
       removeFocus() {
         document.querySelectorAll('.city_tips')?.forEach(item => {
-          item.addEventListener('mouseenter', () => {
-            document.querySelectorAll('.city_tips')?.forEach(item => {
-              item.blur()
-            })
-          })
+          item.blur()
         }) 
       }
       
