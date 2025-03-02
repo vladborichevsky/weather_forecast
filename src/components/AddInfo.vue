@@ -44,9 +44,9 @@
   }
 
   const sources = {
-    pressure: "/icons/pressure_icon.png",
-    humidity: "/icons/humidity_icon.png",
-    windSpeed: "/icons/wind_icon.png"
+    pressure: "/icons/pressure_icon.webp",
+    humidity: "/icons/humidity_icon.webp",
+    windSpeed: "/icons/wind_icon.webp"
   }
 
   const titles = {

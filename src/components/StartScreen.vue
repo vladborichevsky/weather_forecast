@@ -17,14 +17,14 @@
   let interval: number // для setInterval задаётся тип number, поскольку в среде браузера setInterval возвращает числовой идентификатор таймера
 
   const slides = [ 
-    "/startScreenImg/1.png", 
-    "/startScreenImg/2.png", 
-    "/startScreenImg/3.png",
-    "/startScreenImg/4.png",
-    "/startScreenImg/5.png",
-    "/startScreenImg/6.png",
-    "/startScreenImg/7.png",
-    "/startScreenImg/8.png"
+    "/startScreenImg/1.webp", 
+    "/startScreenImg/2.webp", 
+    "/startScreenImg/3.webp",
+    "/startScreenImg/4.webp",
+    "/startScreenImg/5.webp",
+    "/startScreenImg/6.webp",
+    "/startScreenImg/7.webp",
+    "/startScreenImg/8.webp"
   ]
 
   const slider = ref<HTMLElement[] | null>([]) 

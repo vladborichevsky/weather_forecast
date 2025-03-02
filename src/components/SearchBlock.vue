@@ -15,7 +15,7 @@
       :disabled="modelValue.length < 2"
       @click="getWeatherEmit()"
       :title="title">
-        <img class="icon" src="/icons/magnifying_glass_icon.png" alt="">
+        <img class="icon" src="/icons/magnifying_glass_icon.webp" alt="">
     </search-button>
 
   </div> 

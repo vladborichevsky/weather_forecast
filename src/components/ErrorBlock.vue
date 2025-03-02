@@ -5,7 +5,7 @@
     </div>
 
     <div v-show="fetchFail">
-      <img src="/fetchFail.png" alt="">
+      <img src="/fetchFail.webp" alt="">
     </div>
   </div>
 </template>

@@ -4,7 +4,6 @@
     @input="updateModelValue($event.target.value)"
     type="text"
     class="search_input">
-
 </template>
 
 
@@ -28,9 +27,6 @@
     }
   }
 </script>
-
-
-
 
 
 <style scoped lang="scss">

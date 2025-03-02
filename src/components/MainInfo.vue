@@ -24,7 +24,7 @@
     <div class="location">
       <div class="city_name_wrapper">
         <div class="location_icon">
-          <img src="/icons/location_icon.png" alt="location_icon">
+          <img src="/icons/location_icon.webp" alt="location_icon">
         </div>
         <div v-if="props.weatherData" class="city_name">
           {{ props.weatherData.data.name }}
