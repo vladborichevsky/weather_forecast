@@ -6,7 +6,8 @@
       :src="slide"
       class="slider_item" 
       alt="image" 
-      ref="slider">
+      ref="slider"
+      loading="lazy">
   </div>
 </template>
 
