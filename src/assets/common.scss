@@ -1,0 +1,16 @@
+@use './variables' as vars;
+
+* {
+  margin: 0;
+  padding: 0;
+  color: vars.$main-color;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
