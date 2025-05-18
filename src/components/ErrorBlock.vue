@@ -5,27 +5,26 @@
     </div>
 
     <div v-show="fetchFail">
-      <img src="/fetchFail.webp" alt="">
+      <img src="/fetchFail.webp" alt="" />
     </div>
   </div>
 </template>
 
-
 <script setup lang="ts">
-  const props = defineProps<{
-    errorFetchMes: string,
-    fetchFail: boolean,
-  }>()
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const props = defineProps<{
+  errorFetchMes: string
+  fetchFail: boolean
+}>()
 </script>
 
-
 <style scoped lang="scss">
-  @use '@/assets/variables' as vars;
+@use '@/assets/variables' as vars;
 
-  .info_item_error {
-    margin-top: 5px;
-    color: vars.$red-color;
-    font-size: 16px;
-    min-height: 20px;
-  }
+.info_item_error {
+  margin-top: 5px;
+  color: vars.$red-color;
+  font-size: 16px;
+  min-height: 20px;
+}
 </style>
